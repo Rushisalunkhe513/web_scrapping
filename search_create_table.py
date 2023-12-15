@@ -70,3 +70,43 @@ import pandas as pd
 
 table = pd.DataFrame({"product_data":product_list,"price_data":price_list
                       ,"review":review_list,"description_data":description_list})  
+
+
+# Now we will get data from nested html tags.
+
+boxes = soup.find_all('div',class_="col-md-4 col-xl-4 col-lg-4")[2]
+print(boxes)   
+
+# Find_all will give us data in list format
+# so , now to find how much box data we have in this, lets use len function on boxes.
+
+#print(len(boxes))
+
+# This will give us data of 2 nd div and its nested tags.
+#print(boxes[1])
+
+# now from this boxes we will be needing the inside tags like <a> tag.
+
+# This will get us <a> tag from <div> tag.
+print(boxes.find('a').text)
+
+# This will get us p tag with its class inside div tag.
+print(boxes.find('p',class_="float-end review-count").text)
+
+a_tag = boxes.find_all('a',class_="title")
+
+print(a_tag)
+
+
+# lets work with sliding tags
+
+box_tag = soup.find_all("div",class_="col-lg-3 sidebar")[0]
+
+print(box_tag)
+
+print(box_tag.find('a',class_="nav-link subcategory-link active").text)
+
+print(box_tag.find_all('li',class_="nav-item")[1])
+
+
+print(box_tag.find_all('ul',class_="nav ",id='side-menu'))
