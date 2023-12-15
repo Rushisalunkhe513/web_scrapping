@@ -116,3 +116,24 @@ print(soup.find_all(string = re.compile('S')))
 
 # this will return all data which have no in it.
 print(soup.find_all(string = re.compile(('No'))))
+
+# if we want to find all classes from the html page content
+# This will return all tags which have class as pull to it.
+ 
+print(soup.find_all(class_= re.compile("pull")))
+
+
+# if we want to find specific tag with class in it.
+# This will return all p tags.
+print(soup.find_all('p'))
+# This will return all p tags with class as description card-text.
+print(soup.find_all('p',class_=re.compile("description card-text")))
+
+# if we want only 2 of this p tag with same class.
+
+print(soup.find_all('p',class_=re.compile("description card-text"),limit=2))
+
+# we can alson find by multiple string.
+# this will return all strings with Nokia 123 and Iphone.
+
+print(soup.find_all(string = ("Nokia 123","Iphone")))
